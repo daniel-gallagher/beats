@@ -26,12 +26,12 @@ var threat = (function () {
     var convertFields = new processor.Convert({
         fields: [
             { from: "json.Event.id", to: "rule.id" },
-            { from: "json.Event.info", to: "misp.threat_indicator.description" },
+            { from: "json.comment", to: "misp.threat_indicator.description" },
             { from: "json.Event.info", to: "rule.description" },
-            { from: "json.Event.uuid", to: "misp.threat_indicator.id" },
+            { from: "json.Event.uuid", to: "event.id" },
             { from: "json.Event.uuid", to: "rule.uuid" },
             { from: "json.category", to: "rule.category" },
-            { from: "json.uuid", to: "event.id" },
+            { from: "json.uuid", to: "misp.threat_indicator.id" },
         ],
         mode: "rename",
         ignore_missing: true,
