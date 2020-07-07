@@ -25,13 +25,14 @@ var threat = (function () {
 
     var convertFields = new processor.Convert({
         fields: [
-            { from: "json.Event.id", to: "rule.id" },
+            { from: "json.category", to: "misp.threat_indicator.category" },
             { from: "json.comment", to: "misp.threat_indicator.description" },
-            { from: "json.Event.info", to: "rule.description" },
-            { from: "json.Event.uuid", to: "event.id" },
-            { from: "json.Event.uuid", to: "rule.uuid" },
-            { from: "json.category", to: "rule.category" },
-            { from: "json.uuid", to: "misp.threat_indicator.id" },
+            { from: "json.deleted", to: "misp.threat_indicator.deleted" },
+            { from: "json.object_id", to: "misp.threat_indicator.object_id" },
+            { from: "json.to_ids", to: "misp.threat_indicator.to_ids" },
+            { from: "json.uuid", to: "misp.threat_indicator.uuid" },
+            { from: "json.Event.info", to: "misp.event.description" },
+            { from: "json.Event.uuid", to: "misp.event.uuid" }
         ],
         mode: "rename",
         ignore_missing: true,
