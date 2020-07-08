@@ -19,7 +19,8 @@
         "set": {
           "field": "_id",
           "value": "{{misp.threat_indicator.uuid}}"
-    }
+        }
+      }
     ],
     "on_failure" : [{ 
       "set" : { 
