@@ -22,6 +22,11 @@ var threat = (function () {
     var setThreatFeedField = function (evt) {
         evt.Put("misp.threat_indicator.feed", "misp");
     };
+    
+    var setDocumentId = function (evt) {
+        var uuid = evt.Get("json.uuid");
+        evt.Put("@metadata._id", uuid);
+    };
 
     var convertFields = new processor.Convert({
         fields: [
@@ -201,6 +206,7 @@ var threat = (function () {
         .Add(decodeJson)
         .Add(categorizeEvent)
         .Add(setThreatFeedField)
+        .Add(setDocumentId)
         .Add(convertFields)
         .Add(setAttackPattern)
         .Build();

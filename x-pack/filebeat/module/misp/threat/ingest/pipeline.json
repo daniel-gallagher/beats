@@ -14,12 +14,6 @@
           "target_field": "source.geo",
           "ignore_missing": true
         }
-      },
-      {
-        "set": {
-          "field": "_id",
-          "value": "{{misp.threat_indicator.uuid}}"
-        }
       }
     ],
     "on_failure" : [{ 
