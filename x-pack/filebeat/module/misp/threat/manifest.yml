@@ -3,6 +3,8 @@ module_version: "1.0"
 var:
   - name: input
     default: httpjson
+  - name: index
+    default: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
   - name: api_key
     default: ""
   - name: http_client_timeout
