@@ -11,6 +11,7 @@ json_objects_array: {{ .json_objects_array }}
 pagination: {{ .pagination }}
 url: {{ .url }}
 ssl: {{ .ssl }}
+index: {{ .index }}
 
 {{ else if eq .input "file" }}
 
@@ -28,6 +29,16 @@ processors:
       lang: javascript
       id: misp_script
       file: ${path.home}/module/misp/threat/config/pipeline.js
+  - copy_fields:
+      fields:
+        - from: json.Tag
+          to: misp.threat_intel.tags
+      fail_on_error: false
+      ignore_missing: true
+  - drop_event:
+      when:
+        equals:
+          misp.threat_indicator.to_ids: false
   - timestamp:
       field: json.timestamp
       layouts:
